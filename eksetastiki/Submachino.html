@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SubMachino</title>
+    <style>
+        body{
+            background:white;
+            overflow: hidden;
+        }
+
+        img{
+            height:1080px;
+            width:1920;
+        }
+
+        button{
+            position:relative;
+            top:500px;
+            left:800px;
+            height:30px;
+            width:300px;
+            cursor:pointer;
+        }
+
+        button#myB {
+            position: absolute;
+            top: 460px;
+            left: 750px;
+            height: 80px;
+            width: 400px;
+            font-size: 2.2em;
+            border-radius: 20px;
+            background: #222;
+            color: #fff;
+            border: 4px solid #888;
+            box-shadow: 0 8px 32px #0008, 0 1px 0 #fff4 inset;
+            cursor: pointer;
+            z-index: 1000;
+            transition: background 0.2s, color 0.2s;
+        }
+
+    button#myB:hover {
+        background: #444;
+        color: #ff0;
+    }
+
+        .Start{
+            z-index:10;
+            position:fixed;
+            top:0;
+            left: 0;
+            width:100vw;
+            height:100vh;
+            background: #000;
+        }
+
+        .Start img#myP {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1920px;
+        height: 1080px;
+        z-index: 1;
+    }
+
+        .Lobby{
+            height:1080px;
+            width:1920;
+            display:none;
+            z-index:1;
+            position:fixed;
+            top:0;
+            left: 0;
+            width:100%;
+            height:100%;
+        }
+
+        .barracks{
+            position:fixed;
+            top: 520px;
+            left: 1245px;
+            width:151px;
+            height:438px;
+            display:block;
+        }
+
+        .LeftRoom{
+            height:1080px;
+            width:1920;
+            display:none;
+            z-index:1;
+            position:fixed;
+            top:0;
+            left: 0;
+            width:100%;
+            height:100%;
+        }
+
+        .pointerr{
+            position:fixed;
+            z-index:2;
+            height:30px;
+            width:30px;
+            top:700px;
+            left:148px;
+        }
+
+        .LobbyLefty{
+            position: fixed;
+            z-index: 2;
+            height:430px;
+            width:30px;
+            top: 462px;
+            left:100px;
+            cursor:pointer;
+        }
+
+        .LobbyRighty{
+            position: fixed;
+            height:430px;
+            width:30px;
+            top:580px;
+            left:1313px;
+            cursor:pointer;
+        }
+
+
+
+
+
+
+/****  Find the Difference Game  CSS****/
+
+    .FindTheDifference{
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        width:980px;
+        height:520px;
+        z-index: 110;
+        display: none;
+        box-shadow: 0 0 20px rgba(0,0,0,0.2); /* Optional: for effect */
+    }
+
+	h1{
+		text-align:center;
+        z-index:110;
+        position:absolute;
+        top:250px;
+        left:700px; 
+	}
+
+    .hidden{
+      display:none;
+      position:absolute;
+      z-index:110;
+      height:60px;
+      width:60px;
+    }
+
+    .canva{
+      position:relative;
+      top:200px;
+      left:36px;
+      width:980px;
+      height:520px;
+      margin:auto;
+      border:4px solid grey;
+      z-index:110;
+    }
+
+    .Artboard{
+      box-sizing: border-box;
+      z-index:110;
+      width:980px;
+      height:520px;
+    }
+
+    .rooming{
+        position:fixed;
+        top:0;
+        left: 0;
+        width:100%;
+        height:100%;
+        z-index:-1;
+    }
+
+    map{
+        position:absolute;
+        width:980px;
+        height:520px;
+        top:0;
+        left:0;
+    }
+
+    area.spot1, area.spot2, area.spot3, area.spot4, area.spot5, area.spot6, area.spot7{
+        position:absolute;
+        z-index:111;
+    }
+
+    .highlit{
+        height:60px !important;
+        width:60px !important;
+    }
+
+    .Righty{
+        position: fixed;
+        height:430px;
+        width:30px;
+        top:580px;
+        left:1313px;
+        cursor:pointer;
+    }
+
+
+/**** End of Find the Difference Game CSS  ****/
+
+/**** Start of Right Room CSS ****/
+
+    .RightRoom{
+        height:1080px;
+        width:1920px;
+        display:none;
+        z-index:1;
+        position:fixed;
+        top:0;
+        left: 0;
+        width:100%;
+        height:100%;
+        z-index: 100;
+    }
+
+    .LobbyLefty2{
+       position: fixed;
+        z-index: 2;
+        height:430px !important;
+        width:50px !important;
+        top: 462px;
+        left:165px;
+        cursor:pointer;
+        display:none;
+    }
+
+    .barracks2{
+        position:fixed;
+        top: 520px;
+        left: 1258px;
+        width:151px;
+        height:438px;
+        display:none;
+    }
+
+    .button1{
+        position: fixed;
+        top: 438px;
+        left: 372px;
+        width: 400px;
+        height: 233px;
+        display: block;
+    }
+
+    .RightRighty{
+        position: fixed;
+        height:430px;
+        width:30px;
+        top:570px;
+        left:1313px;
+        cursor:pointer;
+        display: none;
+    }
+/**** End of Right Room CSS ****/
+
+/**** Items CSS ****/
+    .item1_1{
+        height:106px;
+        width:106px;
+        position:absolute;
+        left:1510px;
+        top: 570px;
+        display:none;
+    }
+
+    .item1_2{
+        height:106px;
+        width:106px;
+        position:absolute;
+        left:1318px;
+        top: 462px;
+        display:none;
+        
+    }
+
+    .item1_3{
+        height:106px;
+        width:106px;
+        position:absolute;
+        left:1510px;
+        top: 570px;
+        display:none;
+        
+    }
+
+    .item1_4{
+        height:106px;
+        width:106px;
+        position:absolute;
+        left:1510px;
+        top: 570px;
+        display:none;
+        
+    }
+
+    .item2_1{
+        height: 106px;
+        width: 106px;
+        position: absolute;
+        left: 1740px;
+        top: 570px;
+        display:none;
+    }
+
+    .item2_2{
+        height: 106px;
+        width: 106px;
+        position: absolute;
+        left: 1592px;
+        top: -130px;
+        display: none;
+    }
+
+    .item2_3{
+        height: 106px;
+        width: 106px;
+        position: absolute;
+        left: 1740px;
+        top: 570px;
+        display: none;
+    }
+
+    .item2_4{
+        height: 106px;
+        width: 106px;
+        position: absolute;
+        left: 1740px;
+        top: 570px;
+        display: none;
+    }
+
+    .item3_1{
+        height:106px;
+        width:106px;
+        position:absolute;
+        left:1520px;
+        top: 750px;
+        display:none;
+    }
+
+    .item3_2{
+        height:106px;
+        width:106px;
+        position:absolute;
+        left:1520px;
+        top: 750px;
+        display:none;
+        
+    }
+
+    .item3_3{
+        height: 106px;
+        width: 106px;
+        position: absolute;
+        left: 1520px;
+        top: 750px;
+        display: none;
+        }
+
+    .item3_4{
+        height: 106px;
+        width: 106px;
+        position: absolute;
+        left: 1520px;
+        top: 750px;
+        display: none; 
+    }
+
+
+/**** End of Item CSS ****/
+
+/**** Last Room CSS ****/
+    .LastRoom{
+        height:1080px;
+        width:1920px;
+        display:none;
+        z-index:1;
+        position:fixed;
+        top:0;
+        left: 0;
+        width:100%;
+        height:100%;
+    }
+
+    .LastLefty{
+        position: fixed;
+        z-index: 2;
+        height:430px;
+        width:30px;
+        top: 462px;
+        left:100px;
+        cursor:pointer;
+    }
+
+
+/**** End of Last Room CSS ****/
+
+    .Almost {
+        left: 520px;
+        top: 200px;
+        position: absolute;
+        display: none;
+        z-index: 100;
+        height: 300px;
+        width: 400px;
+    }
+
+    .finished {
+        top: 200px;
+        left: 520px;
+        position: absolute;
+        display: none;
+        z-index: 101;
+        height: 300px;
+        width: 400px;
+    }
+
+    .exit {
+        position: absolute;
+        top: -470px;
+        left: -360px;
+        height: 1080px;
+        width: 1920px;
+        display: none;
+    }
+
+    .zahad{
+        position: absolute;
+        top:0px;
+        left:0px;
+    }
+
+    .exit2 {
+        display: none;
+        position: absolute;
+        height: 379px;
+        width: 174px;
+        top: -200px;
+        z-index: 100000;
+        left: 520px;
+        cursor:pointer;
+    }
+
+    /* ...existing styles... */
+    .lock-cage {
+        background: #222;
+        border: 8px solid #888;
+        border-radius: 30px;
+        box-shadow: 0 8px 32px #0008, 0 1px 0 #fff4 inset;
+        width: 420px;
+        padding: 40px 30px 30px 30px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        z-index: 2000;
+        text-align: center;
+    }
+    .lock {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: flex-start;
+        margin-top: 30px;
+        position: relative;
+        z-index: 2;
+    }
+    .digit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 1em;
+    }
+    .digit button {
+        width: 38px;
+        font-size: 1.2em;
+        cursor: pointer;
+        background: #eee;
+        border: 1px solid #888;
+        border-radius: 6px;
+        margin: 2px 0;
+        transition: background 0.2s;
+    }
+    .number {
+        width: 38px;
+        height: 38px;
+        text-align: center;
+        line-height: 38px;
+        font-size: 1.8em;
+        border: 2px solid #333;
+        border-radius: 8px;
+        margin: 5px 0;
+        transition: background 0.2s;
+        background: #fff;
+    }
+    .blue { background: #3af !important; color: #fff !important; }
+    .red { background: #f33 !important; color: #fff !important; }
+    .green { background: #3c3 !important; color: #fff !important; }
+    .lock-btn, .try-again-btn {
+        display: block;
+        margin: 40px auto 0 auto;
+        width: 180px;
+        font-size: 1.2em;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        background: #444;
+        color: #fff;
+        box-shadow: 0 2px 8px #0003;
+        transition: background 0.2s;
+        z-index: 3;
+    }
+    .lock-btn:hover, .try-again-btn:hover {
+        background: #666;
+    }
+    .try-again-btn {
+        margin-top: 20px;
+        background: #888;
+    }
+    </style>
+</head>
+<body>
+
+<!----- The Starting Page --------> 
+
+    <div class="Start">
+        <img id="myP" src="Images/start.jpg">
+        <button id="myB" type="button" onclick="myFunction()">Start</button> 
+    </div>
+
+
+    <script>
+        function myFunction() { 
+            document.querySelector(".Start").style.display = "none"; // Hide the Start div
+            document.querySelector(".Lobby").style.display = "block"; // Hide the Start div
+
+            var elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) { /* Safari */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE11 */
+                elem.msRequestFullscreen();
+            }
+        }
+
+
+    </script>
+
+<!----- End of Start Page -------->
+
+
+<!----- The Lobby Page -------->
+
+
+
+    <div class="Lobby">
+        <div class="container" id="myL">
+            <div class="pointerr">
+                <img id="myLefty" src="Images/right.png" alt="Clickable Image" class="LobbyLefty">
+                <img id="myLobbyRighty" src="Images/right.png" alt="Clickable Image" class="LobbyRighty">
+                <img src="Images/barracks.png" class="barracks">
+                <img id="Exit" src="images/DADO.png" class="exit2" >
+                <img src="images/ZADO.png" class="exit" >
+
+            </div>
+
+            <img src="Images/FirstItem.png" class="item1_1">
+            <img src="Images/SecondItem.png" class="item2_1">
+            <img src="Images/ThirdItem.png" class="item3_1">
+
+            <img src="Images/lobby.png">
+            <img id="Almost" src="Images/LastItem.png" class="Almost">
+            <img id="finished" src="Images/FinishedItem.png" class="finished">
+
+        </div>
+        
+    </div>
+
+    <script>
+        document.getElementById('Exit').onclick = function(){
+            document.querySelector('.Lobby').style.display = 'none';
+            document.querySelector('.BYE').style.display = 'block';
+        }
+    </script>
+
+    <script>
+        
+        document.getElementById('Almost').onclick = function() {
+            document.querySelector('.finished').style.display = 'block';
+            document.querySelector('.item1_1').style.display = 'none';
+            document.querySelector('.item2_1').style.display = 'none';
+            document.querySelector('.item3_1').style.display = 'none';
+
+            document.querySelector('.exit').style.display = 'block';
+            document.querySelector('.exit2').style.display = 'block';
+            document.querySelector('.LobbyLefty').style.display = 'none';
+
+        }
+    </script>
+
+    <script>
+
+        document.getElementById('myLefty').onclick = function() {
+            document.querySelector('.Lobby').style.display = 'none';
+            document.querySelector('.LeftRoom').style.display = 'block';
+            document.querySelector('.FindTheDifference').style.display = 'block';
+            if(x == 1){
+                document.querySelector('.item2_2').style.display = 'block';
+            } else {
+                document.querySelector('item2_2').style.display = 'none';
+            }
+
+            if(y == 1){
+                document.querySelector('.item3_2').style.display = 'block';
+            } else {
+                document.querySelector('.item3_2').style.display = 'none';
+            }
+
+
+
+        };
+
+
+
+    </script>
+
+    <script>
+        document.getElementById('myLobbyRighty').onclick = function() {
+            document.querySelector('.Lobby').style.display = 'none';
+            document.querySelector('.RightRoom').style.display = 'block';
+            document.querySelector('.LobbyLefty2').style.display = 'block';
+            document.querySelector('#myLefty2').style.display = 'block';
+            if(x == 1){
+                document.querySelector('.barracks2').style.display = 'none';
+            } else {
+                document.querySelector('.barracks2').style.display = 'block';
+            }
+        };
+    </script>
+
+
+<!----- End of Lobby Page -------->
+
+
+<!----- The Left Room Page -------->
+
+    <div class="LeftRoom">
+        <img class="rooming" src="Images/FindImageRoom.png">
+        <img src="Images/ThirdItem.png " class="item3_2">
+        <div class="pointerr">
+                <img src="Images/SecondItem.png " class="item2_2" >
+                <img id="myRighty" src="Images/right.png" alt="Clickable Image" class="Righty">
+
+        </div>
+
+        <script>
+            document.getElementById('myRighty').onclick = function() {
+            if(score >= 70){
+                document.querySelector('.Lobby').style.display = 'block';
+                document.querySelector('.LeftRoom').style.display = 'none';
+                document.querySelector('.FindTheDifference').style.display = 'none';
+                document.querySelector('.barracks').style.display = 'none';
+            } else {
+                document.querySelector('.Lobby').style.display = 'block';
+                document.querySelector('.LeftRoom').style.display = 'none';
+                document.querySelector('.FindTheDifference').style.display = 'none';
+                document.querySelector('.barracks').style.display = 'block';
+            }
+        }
+        </script>
+
+        <h1>Score : <span id="score"> </span> </h1>
+        <div class="FindTheDifference">
+
+            <img src="Images/FirstItem.png" class="item1_2">
+            
+
+            <div class="canva">
+
+                <img src="Images/highlighter.png" class="hidden" class="highlit" id="spot1">
+                <img src="Images/highlighter.png" class="hidden" class="highlit" id="spot2">
+                <img src="Images/highlighter.png" class="hidden" class="highlit" id="spot3">
+                <img src="Images/highlighter.png" class="hidden" class="highlit" id="spot4">
+                <img src="Images/highlighter.png" class="hidden" class="highlit" id="spot5">
+                <img src="Images/highlighter.png" class="hidden" class="highlit" id="spot6">
+                <img src="Images/highlighter.png" class="hidden" class="highlit" id="spot7">
+
+                <img class="Artboard" src="Images/Artboard 1.jpg" usemap="#Map">
+
+                <map name="Map">
+                    <area shape="circle" coords="770,300,32"   class="spot1"> <!-- Antras -->
+                    <area shape="circle" coords="630,370,32"   class="spot2"> <!-- Paidaki1 -->
+                    <area shape="circle" coords="555,275,32"    class="spot3"> <!-- Skulaki -->
+                    <area shape="circle" coords="870,184,32"    class="spot4"> <!-- Podaraki -->
+                    <area shape="circle" coords="730,389,32"    class="spot5"> <!-- Radio -->
+                    <area shape="circle" coords="527,440,32"    class="spot6"> <!-- Paidaki2 -->
+                    <area shape="circle" coords="945,500,32"    class="spot7"> <!-- Kapelo -->
+                </map> 
+
+            </div>
+
+            <script class="jscanva">
+                var score = 0;
+                var spots = ['.spot1', '.spot2', '.spot3','.spot4','.spot5','.spot6','.spot7'];
+                /*
+                var spotsProps = {
+                    spot1:{'a':1, 'b':2, 'c':3},
+                    spot2:{'a':11, 'b':12, 'c':13},
+                    spot3:{'a':21, 'b':22, 'c':23},
+                    spot4:{'a':31, 'b':32, 'c':33},
+                    spot5:{'a':41, 'b':42, 'c':43}
+                    };
+                */
+
+                spots.forEach(function(item){
+
+                    spot = document.querySelector(item);
+                    myPropsSpot = item.replace('.', '');
+                    //console.log(spotsProps[myPropsSpot].b);
+                    myCoords = spot.coords;
+                    console.log(myCoords);
+                    myCoordsSplit = myCoords.split(',');
+                    myX = parseInt(myCoordsSplit[0]);
+                    myY = parseInt(myCoordsSplit[1]);
+                    spot.style.left=(myX-40)+'px';
+                    spot.style.top =(myY-30)+'px';
+                    console.log(item+'='+myX);
+                    spot.style.width='32px';
+                    spot.style.height='32px';
+                    spot.style.display='block';
+
+                    spot.addEventListener('click', function(){
+                        myHiliterId = item.replace('.', '#');
+                        myHiliter = document.querySelector(myHiliterId);
+                        myHiliter.style.display='block';
+                        myCoords = this.coords;
+                    
+                        myCoordsSplit = myCoords.split(',');
+                        myX = parseInt(myCoordsSplit[0]);
+                        myY = parseInt(myCoordsSplit[1]);
+
+                        //console.log(myX +' - '+ myY);
+                        console.log(this.shape);
+                        if(this.shape == 'circle'){
+                            myHiliter.style.left  = (myX - 50 )+'px';
+                            myHiliter.style.top   = (myY - 50)+'px';
+                        }
+                        
+                        if(this.shape == 'rect'){
+                            myHiliter.style.left  = (myX - 15)+'px';
+                            myHiliter.style.top   = (myY - 15)+'px';
+                        }
+                        
+                        score+=10;
+                        document.querySelector('#score').innerHTML = score;
+                        this.style.display='none';
+                        this.style.zindex = 1;
+
+                        if(score==70){
+                            document.querySelector('.item1_1').style.display = 'block';
+                            document.querySelector('.item1_2').style.display = 'block';
+                            document.querySelector('.item1_3').style.display = 'block';
+                            document.querySelector('.item1_4').style.display = 'block';
+                        }
+
+                        if( y == 1){
+                            document.querySelector('.item3_2').style.display = 'block';
+                        } else {
+                            document.querySelector('.item3_2').style.display = 'none';
+                        }
+
+
+                    })
+
+                });
+            </script>
+        </div>
+    </div>
+
+<!----- End of Left Room Page -------->
+
+<!----- Start of Right Room -->
+
+    <div class="RightRoom">
+        <div class="imaging">
+            <img class="riro" src="Images/RightRoom.png">
+            <img id="myLefty2" src="Images/right.png" alt="Clickable Image" class="LobbyLefty2">
+            <img src="Images/barracks.png" class="barracks2">
+            <img src="Images/FirstItem.png" class="item1_3">
+            <img id="btn1" src="Images/TheButton.png" class="button1">
+            <img src="Images/SecondItem.png" class="item2_3">
+            <img id="myRightRighty" src="Images/right.png" alt="Clickable Image" class="RightRighty">
+            <img src="Images/ThirdItem.png" class="item3_3">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('myLefty2').onclick = function(){
+            document.querySelector('.RightRoom').style.display = 'none';
+            document.querySelector('.Lobby').style.display = 'block';
+            if(x == 1){
+                document.querySelector('.item2_1').style.display = 'block';
+            } else {
+                document.querySelector('.item2_1').style.display = 'none';
+            }
+
+            if(y == 1){
+                document.querySelector('.item3_1').style.display = 'block';
+                document.querySelector('.Almost').style.display = 'block'; 
+            } else {
+                document.querySelector('.item3_1').style.display = 'none';
+            }
+        };
+    </script>
+
+    <script>
+        var y = 0;
+            document.getElementById('myRightRighty').onclick = function() {
+                document.querySelector('.RightRoom').style.display = 'none';
+                document.querySelector('.LastRoom').style.display = 'block';
+                document.querySelector('.item1_4').style.display = 'block';
+                document.querySelector('.item2_4').style.display = 'block';
+                y = 1;
+            };
+    </script>
+
+    <script>
+        var x = 0;
+        document.getElementById('btn1').onclick = function(){
+            x = 1;
+            document.querySelector('.item2_3').style.display = 'none';
+            document.querySelector('.barracks2').style.display = 'none';
+            document.querySelector('.item2_3').style.display = 'block';
+            document.querySelector('.RightRighty').style.display = 'block';
+        };
+    </script>
+
+<!----- End of Right Room -->
+
+<!--- Start of Last Room Page -------->
+<div class="LastRoom">
+    <img src="Images/LastRoom.png" class="LastRoomImage">
+
+    <img src="Images/FirstItem.png" class="item1_4">
+    <img src="Images/SecondItem.png" class="item2_4">
+    <img src="Images/ThirdItem.png" class="item3_4" id="lastPiece" style="display:none;">
+
+    <img id="myLastLefty" src="Images/right.png" alt="Clickable Image" class="LastLefty">
+
+    <!-- Combination Lock Game Start -->
+    <div class="lock-cage" style="margin: 40px auto 0 auto;">
+        <div style="margin-bottom:18px; color:#fff; font-size:1.1em;">
+        <span style="color:#3af;font-weight:bold;">Blue</span>: Too low&nbsp;&nbsp;
+        <span style="color:#f33;font-weight:bold;">Red</span>: Too high&nbsp;&nbsp;
+        <span style="color:#3c3;font-weight:bold;">Green</span>: Just right
+    </div>
+        <div class="bars">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+            <div class="bar4"></div>
+            <div class="bar5"></div>
+        </div>
+        <div class="lock">
+            <div class="digit">
+                <button onclick="changeDigit(0, 1)">▲</button>
+                <div class="number" id="num0">1</div>
+                <button onclick="changeDigit(0, -1)">▼</button>
+            </div>
+            <div class="digit">
+                <button onclick="changeDigit(1, 1)">▲</button>
+                <div class="number" id="num1">1</div>
+                <button onclick="changeDigit(1, -1)">▼</button>
+            </div>
+            <div class="digit">
+                <button onclick="changeDigit(2, 1)">▲</button>
+                <div class="number" id="num2">1</div>
+                <button onclick="changeDigit(2, -1)">▼</button>
+            </div>
+            <div class="digit">
+                <button onclick="changeDigit(3, 1)">▲</button>
+                <div class="number" id="num3">1</div>
+                <button onclick="changeDigit(3, -1)">▼</button>
+            </div>
+        </div>
+        <button class="lock-btn" id="lockBtn" onclick="lockAnswer()">Lock Answer</button>
+        <button class="try-again-btn" id="tryAgainBtn" onclick="tryAgain()" style="display:none;">Try Again</button>
+    </div>
+    <!-- Combination Lock Game End -->
+
+    <script>
+        // Combination lock logic for the Last Room
+        const correct = [3, 3, 3, 3];
+        const values = [1, 1, 1, 1];
+        let locked = false;
+
+        function updateColors() {
+            for (let i = 0; i < 4; i++) {
+                const el = document.getElementById('num' + i);
+                el.textContent = values[i];
+                el.classList.remove('blue', 'red', 'green');
+                if (locked) {
+                    if (values[i] < correct[i]) {
+                        el.classList.add('blue');
+                    } else if (values[i] > correct[i]) {
+                        el.classList.add('red');
+                    } else {
+                        el.classList.add('green');
+                    }
+                }
+            }
+        }
+
+        function changeDigit(idx, delta) {
+            if (locked) return;
+            values[idx] += delta;
+            if (values[idx] < 1) values[idx] = 9;
+            if (values[idx] > 9) values[idx] = 1;
+            updateColors();
+        }
+
+        function lockAnswer() {
+            locked = true;
+            updateColors();
+            document.getElementById('lockBtn').style.display = 'none';
+            document.getElementById('tryAgainBtn').style.display = 'block';
+            // Check if the answer is correct
+            if (values[0] === 3 && values[1] === 3 && values[2] === 3 && values[3] === 3) {
+                document.getElementById('lastPiece').style.display = 'block';
+            }
+        }
+
+        function tryAgain() {
+            locked = false;
+            updateColors();
+            document.getElementById('lockBtn').style.display = 'block';
+            document.getElementById('tryAgainBtn').style.display = 'none';
+            document.getElementById('lastPiece').style.display = 'none';
+        }
+
+        // Initialize colors on load
+        updateColors();
+    </script>
+
+    <style>
+        .lock-cage {
+            background: #222;
+            border: 8px solid #888;
+            border-radius: 30px;
+            box-shadow: 0 8px 32px #0008, 0 1px 0 #fff4 inset;
+            width: 420px;
+            padding: 40px 30px 30px 30px;
+            position: fixed; /* Changed from relative to fixed */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0; /* Remove margin to center perfectly */
+            z-index: 2000; /* High z-index to ensure it's above other elements */
+        }
+        .lock-cage:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 60px;
+            border: 10px solid #888;
+            border-bottom: none;
+            border-radius: 60px 60px 0 0;
+            background: #222;
+            z-index: 2;
+        }
+        .bars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .bars div {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 8px;
+            background: #bbb;
+            border-radius: 4px;
+            opacity: 0.5;
+        }
+        .bars .bar1 { left: 60px; }
+        .bars .bar2 { left: 140px; }
+        .bars .bar3 { left: 220px; }
+        .bars .bar4 { left: 300px; }
+        .bars .bar5 { left: 380px; }
+        .lock {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-start;
+            margin-top: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        .digit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 1em;
+        }
+        .digit button {
+            top: -0px;
+            left: -00px;
+            position: relative;
+            width: 38px;
+            font-size: 1.2em;
+            cursor: pointer;
+            background: #eee;
+            border: 1px solid #888;
+            border-radius: 6px;
+            margin: 2px 0;
+            transition: background 0.2s;
+        }
+        .number {
+            width: 38px;
+            height: 38px;
+            text-align: center;
+            line-height: 38px;
+            font-size: 1.8em;
+            border: 2px solid #333;
+            border-radius: 8px;
+            margin: 5px 0;
+            transition: background 0.2s;
+            background: #fff;
+        }
+        .blue { background: #3af !important; color: #fff !important; }
+        .red { background: #f33 !important; color: #fff !important; }
+        .green { background: #3c3 !important; color: #fff !important; }
+        .lock-btn, .try-again-btn {
+            display: block;
+            margin: 40px auto 0 auto;
+            width: 180px;
+            font-size: 1.2em;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            background: #444;
+            color: #fff;
+            box-shadow: 0 2px 8px #0003;
+            transition: background 0.2s;
+            z-index: 3;
+        }
+        .lock-btn:hover, .try-again-btn:hover {
+            background: #666;
+        }
+
+        .lock-btn {
+                left: 10px;
+                top: -40px;
+                background: #888;
+                z-index: 99999;
+        }
+        .try-again-btn {
+            left: 10px;
+            top: -40px;
+            background: #888;
+            z-index: 99999;
+        }
+    </style>
+
+    <script>
+        document.getElementById('myLastLefty').onclick = function(){
+            document.querySelector('.RightRoom').style.display = 'block';
+            document.querySelector('.LastRoom').style.display = 'none';
+            if(y == 1){
+                document.querySelector('.item3_3').style.display = 'block';
+            } else {
+                document.querySelector('.item3_3').style.display = 'none';
+            }
+        };
+    </script>
+</div>
+<!-- End of Last Room Page -------->
+
+<!--- Bye Bye -->
+    <div class="BYEE">
+        <img class="zahad" src="Images/BYEE.png">
+    </div>
+
+
+<!--- End Of Bye Bye-->
+
+
+
+</body>
+</html>
